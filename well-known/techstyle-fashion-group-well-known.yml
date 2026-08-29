@@ -1,0 +1,62 @@
+generated: '2026-08-29'
+method: probed
+source: >-
+  Direct HTTP probes of /.well-known/* on every TechStyle Fashion Group corporate host,
+  2026-08-29. No pointer is emitted from this file: nothing was served.
+note: >-
+  Every path on the corporate hosts returns the identical 2,410-byte Gandi domain-parking
+  HTML page with HTTP 200 — a catch-all, not a document — so every row below is a MISS
+  recorded as a 200. HTTPS is refused outright on these hosts; the probes ran over plain
+  HTTP because port 443 will not complete a handshake. No security.txt, no api-catalog, no
+  OAuth/OIDC metadata, no ai-plugin.json and no A2A agent card exist. Consequently NO
+  WellKnown, SecurityTxt or AgentCard pointer is wired into apis.yml — this file documents
+  an absence, and an absence must not be scored as a presence.
+hosts:
+- host: www.techstylefashiongroup.com
+  scheme: http
+  note: TLS refused on 443; all responses are the Gandi parking page (catch-all 200).
+  documents:
+  - path: /.well-known/security.txt
+    status: 200
+    file: null
+    result: miss
+    note: HTML parking page, not an RFC 9116 document.
+  - path: /.well-known/api-catalog
+    status: 200
+    file: null
+    result: miss
+    note: HTML parking page, not an RFC 9727 catalog.
+  - path: /.well-known/openid-configuration
+    status: 200
+    file: null
+    result: miss
+    note: HTML parking page, not OIDC discovery metadata.
+  - path: /.well-known/oauth-authorization-server
+    status: 200
+    file: null
+    result: miss
+    note: HTML parking page, not RFC 8414 metadata.
+  - path: /.well-known/ai-plugin.json
+    status: 200
+    file: null
+    result: miss
+    note: HTML parking page, not a plugin manifest.
+  - path: /.well-known/agent-card.json
+    status: 200
+    file: null
+    result: miss
+    note: HTML parking page, not an A2A AgentCard.
+  - path: /.well-known/agent.json
+    status: 200
+    file: null
+    result: miss
+    note: HTML parking page, not a legacy A2A AgentCard.
+- host: www.techstyleos.com
+  scheme: http
+  note: TechStyle OS platform domain; also parked at Gandi, TLS refused on 443.
+  documents:
+  - path: /
+    status: 200
+    file: null
+    result: miss
+    note: 2,350-byte Gandi parking page; no site, therefore no /.well-known surface.
